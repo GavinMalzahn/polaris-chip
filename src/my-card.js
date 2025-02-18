@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import "@haxtheweb/meme-maker/meme-maker.js";
 
 /**
  * Now it's your turn. Here's what we need to try and do:
@@ -19,6 +20,8 @@ export class MyCard extends LitElement {
     this.link = "https://hax.psu.edu/";
     this.fancy = false;
     this.description = "hi";
+    this.topText = "yes";
+    this.bottomText = "no";
   }
 
   static get styles() {
@@ -47,12 +50,7 @@ export class MyCard extends LitElement {
         height: 30px;
         overflow: hidden;
       }
-      img{
-        width: 350px;
-        padding: 8px;
-        aspect-ratio: 1/1;
-        
-      }
+      
       details summary {
         text-align: left;
         font-size: 20px;
@@ -97,7 +95,8 @@ export class MyCard extends LitElement {
       <h2 class="card-title">
       ${this.title}
     </h2>
-    <img src=${this.image} alt="Plo Koon" class="card-image">
+    <meme-maker image-url="${this.image}" bottom-text="${this.bottomText}" top-text="${this.topText}" class="card-image">
+    </meme-maker>
     <table>
         <td>Home Planet: </td>
         <td><slot name="planet">Dorin</slot></td>
@@ -135,6 +134,8 @@ export class MyCard extends LitElement {
       title: { type: String },
       image: { type: String },
       link: { type: String },
+      topText: { type: String },
+      bottomText: { type: String },
 
     };
   }
